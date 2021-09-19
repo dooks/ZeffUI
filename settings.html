@@ -93,6 +93,253 @@
 			<div class="row">
 				<br />
 			</div>            
+>
+
+			<div class="row" id="anchor_general">
+				<div class="col-lg-6" id="anchor_profiles">
+					<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
+						<div id="lang_profiles" class="card-header">
+							Profiles
+						</div>
+						<div class="card-body">
+							<div class="alert alert-dismissible alert-warning">
+								<p class="mb-0" id="lang_experimentalsavesettings">Experimental, this might cause issues. Export and save your settings.</p>
+							</div>
+							<p id="lang_profiledescription" class="card-text">Here you can find profile options for ZeffUI.</p>
+							<div class="form-group row text-right">
+								<label id="lang_profiles_1" class="control-label col-sm-4" for="profileSelect">Profile</label>
+								<div class="col-sm-6">
+									<select class="form-select form-select-sm" id="profileSelect">
+									</select>
+								</div>
+							</div>
+							<div class="form-group text-right">
+								<div class="form-group row text-right">
+									<label class="control-label col-sm-4" for="customcdSaveButton"></label>
+									<div class="col-sm-6" style="text-align: left;">
+										<button class="btn btn-primary btn-sm" onclick="loadProfile()" id="loadProfile"><span id="lang_load">Load</span></button>
+										<button class="btn btn-primary btn-sm" onclick="deleteProfile()" id="deleteProfile"><span id="lang_delete_2">Delete</span></button>
+									</div>
+								</div>
+							</div>
+							<div>
+								<br />
+							</div>
+							<div class="form-group row text-right">
+								<label id="lang_profilename" class="control-label col-sm-4" for="profileName">Profile Name</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control form-control-sm" placeholder="" id="profileName">
+								</div>
+							</div>
+							<div class="form-group text-right">
+								<div class="form-group row text-right">
+									<label class="control-label col-sm-4" for="customcdSaveButton"></label>
+									<div class="col-sm-6" style="text-align: left;">
+										<button class="btn btn-primary btn-sm" onclick="saveProfile(false, false, false, true)" id="saveProfile"><span id="lang_save">Save</span></button>
+									</div>
+								</div>
+							</div>
+							<div>
+								<br />
+							</div>
+							<div class="form-group row text-right">
+								<label id="lang_job" class="control-label col-sm-4" for="jobProfileSelect">Job</label>
+								<div class="col-sm-6">									
+									<select class="form-select form-select-sm" id="jobProfileSelect">
+									</select>
+								</div>
+							</div>
+							<div class="form-group text-right">
+								<div class="form-group row text-right">
+									<label class="control-label col-sm-4" for="customcdSaveButton"></label>
+									<div class="col-sm-6" style="text-align: left;">
+										<button class="btn btn-primary btn-sm" onclick="saveJobProfile()" id="saveJobProfile"><span id="lang_linkjob">Link to job</span></button>
+										<button class="btn btn-primary btn-sm" onclick="saveAllJobProfile()" id="saveAllJobProfile"><span id="lang_linkall">Link to all</span></button>
+										<button class="btn btn-primary btn-sm" onclick="deleteJobProfile()" id="deleteJobProfile"><span id="lang_unlink">Unlink</span></button>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div id="anchor_importexport">
+						</div>
+					</div>	
+				</div>
+				<div class="col-lg-6 anchor" id="anchor_customcdedit">
+					<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
+						<div id="lang_editcustomcooldowns" class="card-header">
+							Edit Custom Cooldowns
+						</div>
+						<div class="card-body">
+							<p id="lang_editcustomcooldownsdescription" class="card-text">Here you can edit custom cooldown abilities.</p>
+							<div class="form-group row text-right">
+								<label id="lang_mode" class="control-label col-sm-4" for="customcdMode">Mode</label>
+								<div class="col-sm-6">
+									<select class="form-select form-select-sm" id="customcdMode" onchange="switchCustomcdMode()">
+										<option id="lang_edit" value="0">Edit</option>
+										<option id="lang_add" value="1">Add</option>
+									</select>
+								</div>
+							</div>
+							<div id="customcdSearchDiv" class="form-group row text-right">
+								<label id="lang_search_1" class="control-label col-sm-4" for="customcdSearch">Search</label>
+								<div class="col-sm-6">
+									<input type="text" class="form-control form-control-sm" placeholder="Default input" id="customcdSearch">
+								</div>
+							</div>
+							<div id="customcdSearchButtonDiv" class="form-group row text-right">
+								<label class="control-label col-sm-4" for="customcdSearchButton"></label>
+								<div class="col-sm-6" style="text-align: left;">
+									<button class="btn btn-primary btn-sm" onclick="searchCustomAbility()" id="customcdSearchButton"><span id="lang_search_2">Search</span></button>
+								</div>
+							</div>
+							<div class="form-group row text-right">
+								<label class="control-label col-sm-4" for="customcdIconPreview"></label>
+								<div id="customcdIconPreviewDiv" class="col-sm-6" style="text-align: left;">
+									<img id="customcdIconPreview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+								</div>
+							</div>
+							<div id="customcdAbilityNoAbilitiesDiv" class="form-group row text-right">
+								<label class="control-label col-sm-4" for="customcdAbilityNoAbilities"></label>
+								<div id="customcdAbilityNoAbilities" class="col-sm-6" style="text-align: left;">
+									<span id="lang_noabilitiesfound">No abilities found...</span>
+								</div>                                
+							</div>
+							<div id="customcdAbilitySelectDiv" class="form-group row text-right">
+								<label id="lang_ability_2" class="control-label col-sm-4" for="customcdAbilitySelect">Ability</label>
+								<div class="col-sm-6">
+									<select class="form-select form-select-sm" id="customcdAbilitySelect" onchange="loadCustomCdAbility()">                                        
+									</select>
+								</div>
+							</div>
+							<div id="customcdOptionsDiv">
+								<div class="form-group">
+									<div class="form-check form-switch">
+										<input type="checkbox" class="form-check-input" id="customcdAbilityEnabled">
+										<label id="lang_abilityenabled_2" class="custom-control-label" for="customcdAbilityEnabled">Ability Enabled</label>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="form-check form-switch">
+										<input type="checkbox" class="form-check-input" id="customcdAbilityTTSEnabled">
+										<label id="lang_ttsenabled_7" class="custom-control-label" for="customcdAbilityTTSEnabled">TTS Enabled</label>
+									</div>
+								</div>
+								<div id="customcdAbilityIdDiv" class="form-group row text-right">
+									<label id="lang_id" class="control-label col-sm-4" for="customcdAbilityId">ID</label>
+									<div class="col-sm-6">
+										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityId">
+									</div>
+								</div>
+								<div id="customcdAbilityJobDiv" class="form-group row text-right">
+									<label id="lang_jobrole" class="control-label col-sm-4" for="customcdAbilityJob">Job / Role</label>
+									<div class="col-sm-6">
+										<select class="form-select form-select-sm" id="customcdAbilityJob">
+											<option id="lang_tank_1" value="Tank">Tank</option>
+											<option id="lang_healer_1" value="Healer">Healer</option>
+											<option id="lang_meleedps" value="MeleeDPS">Melee DPS</option>
+											<option id="lang_rangeddps" value="RangedDPS">Physical Ranged DPS</option>
+											<option id="lang_casterdps" value="CasterDPS">Magic Ranged DPS</option>
+											<option id="lang_melee" value="Melee">Melee</option>
+											<option id="lang_ranged" value="Ranged">Ranged</option>
+											<option id="lang_caster" value="Caster">Caster</option>
+											<option id="lang_acn_1" value="ACN">ACN</option>
+											<option id="lang_arc_1" value="ARC">ARC</option>
+											<option id="lang_ast_1" value="AST">AST</option>
+											<option id="lang_blm_1" value="BLM">BLM</option>
+											<option id="lang_blu_1" value="BLU">BLU</option>
+											<option id="lang_brd_1" value="BRD">BRD</option>
+											<option id="lang_cnj_1" value="CNJ">CNJ</option>
+											<option id="lang_dnc_1" value="DNC">DNC</option>
+											<option id="lang_drg_1" value="DRG">DRG</option>
+											<option id="lang_drk_1" value="DRK">DRK</option>
+											<option id="lang_gla_1" value="GLA">GLA</option>
+											<option id="lang_gnb_1" value="GNB">GNB</option>
+											<option id="lang_lnc_1" value="LNC">LNC</option>
+											<option id="lang_mch_1" value="MCH">MCH</option>
+											<option id="lang_mnk_1" value="MNK">MNK</option>
+											<option id="lang_mrd_1" value="MRD">MRD</option>
+											<option id="lang_nin_1" value="NIN">NIN</option>
+											<option id="lang_pgl_1" value="PGL">PGL</option>
+											<option id="lang_pld_1" value="PLD">PLD</option>
+											<option id="lang_rdm_1" value="RDM">RDM</option>
+											<option id="lang_rog_1" value="ROG">ROG</option>
+											<option id="lang_sam_1" value="SAM">SAM</option>
+											<option id="lang_sch_1" value="SCH">SCH</option>
+											<option id="lang_smn_1" value="SMN">SMN</option>
+											<option id="lang_thm_1" value="THM">THM</option>
+											<option id="lang_war_1" value="WAR">WAR</option>
+											<option id="lang_whm_1" value="WHM">WHM</option>
+										</select>
+									</div>
+								</div>
+								<div id="customcdAbilityTTSTypeDiv" class="form-group row text-right">
+									<label id="lang_ttstype_2" class="control-label col-sm-4" for="customcdAbilityTTSType">TTS Type</label>
+									<div class="col-sm-6">
+										<select class="form-select form-select-sm" id="customcdAbilityTTSType">
+											<option id="lang_abilitycooldown_2" selected="" value="0">Ability Cooldown</option>
+											<option id="lang_abilityduration_2" value="1">Ability Duration</option>
+											<option id="lang_oncast_2" value="2">On Cast</option>
+										</select>
+									</div>
+								</div>
+								<div id="customcdAbilityDurationDiv" class="form-group row text-right">
+									<label id="lang_duration_2" class="control-label col-sm-4" for="customcdAbilityDuration">Duration</label>
+									<div class="col-sm-6">
+										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityDuration">
+									</div>
+								</div>
+								<div id="customcdAbilityCooldownDiv" class="form-group row text-right">
+									<label id="lang_cooldown_2" class="control-label col-sm-4" for="customcdAbilityCooldown">Cooldown</label>
+									<div class="col-sm-6">
+										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityCooldown">
+									</div>
+								</div>
+								<div id="customcdAbilityChargesDiv" class="form-group row text-right">
+									<label id="lang_charges" class="control-label col-sm-4" for="customcdAbilityCooldown">Charges</label>
+									<div class="col-sm-6">
+										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityCharges">
+									</div>
+								</div>
+								<div id="customcdAbilityOrderDiv" class="form-group row text-right">
+									<label id="lang_order_2" class="control-label col-sm-4" for="customcdAbilityOrder">Order</label>
+									<div class="col-sm-6">
+										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityOrder">
+									</div>
+								</div>
+								<div id="customcdAbilityTypeDiv" class="form-group row text-right">
+									<label id="lang_type" class="control-label col-sm-4" for="customcdAbilityType">Type</label>
+									<div class="col-sm-6">
+										<select class="form-select form-select-sm" id="customcdAbilityType">
+											<option id="lang_customcooldowns_3" selected="" value="CustomCooldown">Custom Cooldowns</option>
+											<option id="lang_mitigations_3" value="Mitigation">Mitigations</option>
+											<option id="lang_party_3" value="Party">Party Cooldowns</option>
+											<option id="lang_raidbuffs_3" value="RaidBuff">Raid Buffs</option>
+										</select>
+									</div>
+								</div>	
+								<div id="customcdAddButtonDiv" class="form-group row text-right">
+									<label class="control-label col-sm-4" for="customcdAddButton"></label>
+									<div class="col-sm-6" style="text-align: left;">
+										<button class="btn btn-primary btn-sm" onclick="addCustomAbility()" id="customcdAddButton"><span id="lang_add_2">Add</span></button>
+									</div>
+								</div>
+								<div id="customcdSaveButtonDiv" class="form-group row text-right">
+									<label class="control-label col-sm-4" for="customcdSaveButton"></label>
+									<div class="col-sm-6" style="text-align: left;">
+										<button class="btn btn-primary btn-sm" onclick="saveCustomAbility()" id="customcdSaveButton"><span id="lang_save_1">Save</span></button>
+										<button class="btn btn-primary btn-sm" onclick="deleteCustomAbility()" id="customcdDeleteButton"><span id="lang_delete">Delete</span></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<br />
+			</div>  
+
 			<div class="row" id="anchor_general">
 				<div class="col-lg-6">
 					<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
@@ -200,75 +447,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6" id="anchor_profiles">
-					<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
-						<div id="lang_profiles" class="card-header">
-							Profiles
-						</div>
-						<div class="card-body">
-							<div class="alert alert-dismissible alert-warning">
-								<p class="mb-0" id="lang_experimentalsavesettings">Experimental, this might cause issues. Export and save your settings.</p>
-							</div>
-							<p id="lang_profiledescription" class="card-text">Here you can find profile options for ZeffUI.</p>
-							<div class="form-group row text-right">
-								<label id="lang_profiles_1" class="control-label col-sm-4" for="profileSelect">Profile</label>
-								<div class="col-sm-6">
-									<select class="form-select form-select-sm" id="profileSelect">
-									</select>
-								</div>
-							</div>
-							<div class="form-group text-right">
-								<div class="form-group row text-right">
-									<label class="control-label col-sm-4" for="customcdSaveButton"></label>
-									<div class="col-sm-6" style="text-align: left;">
-										<button class="btn btn-primary btn-sm" onclick="loadProfile()" id="loadProfile"><span id="lang_load">Load</span></button>
-										<button class="btn btn-primary btn-sm" onclick="deleteProfile()" id="deleteProfile"><span id="lang_delete_2">Delete</span></button>
-									</div>
-								</div>
-							</div>
-							<div>
-								<br />
-							</div>
-							<div class="form-group row text-right">
-								<label id="lang_profilename" class="control-label col-sm-4" for="profileName">Profile Name</label>
-								<div class="col-sm-6">
-									<input type="text" class="form-control form-control-sm" placeholder="" id="profileName">
-								</div>
-							</div>
-							<div class="form-group text-right">
-								<div class="form-group row text-right">
-									<label class="control-label col-sm-4" for="customcdSaveButton"></label>
-									<div class="col-sm-6" style="text-align: left;">
-										<button class="btn btn-primary btn-sm" onclick="saveProfile(false, false, false, true)" id="saveProfile"><span id="lang_save">Save</span></button>
-									</div>
-								</div>
-							</div>
-							<div>
-								<br />
-							</div>
-							<div class="form-group row text-right">
-								<label id="lang_job" class="control-label col-sm-4" for="jobProfileSelect">Job</label>
-								<div class="col-sm-6">									
-									<select class="form-select form-select-sm" id="jobProfileSelect">
-									</select>
-								</div>
-							</div>
-							<div class="form-group text-right">
-								<div class="form-group row text-right">
-									<label class="control-label col-sm-4" for="customcdSaveButton"></label>
-									<div class="col-sm-6" style="text-align: left;">
-										<button class="btn btn-primary btn-sm" onclick="saveJobProfile()" id="saveJobProfile"><span id="lang_linkjob">Link to job</span></button>
-										<button class="btn btn-primary btn-sm" onclick="saveAllJobProfile()" id="saveAllJobProfile"><span id="lang_linkall">Link to all</span></button>
-										<button class="btn btn-primary btn-sm" onclick="deleteJobProfile()" id="deleteJobProfile"><span id="lang_unlink">Unlink</span></button>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<div id="anchor_importexport">
-						</div>
-					</div>	
-					<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
+				<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
 						<div id="lang_importexport" class="card-header">
 							Import / Export
 						</div>
@@ -313,11 +492,7 @@
 							</div>
 						</div>						
 					</div>
-				</div>
-			</div>
-			<div class="row">
-				<br />
-			</div>  
+			</div
 			<div class="row">
 				<div class="col-lg-6 anchor" id="anchor_healthbar">
 					<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
@@ -1943,176 +2118,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-6 anchor" id="anchor_customcdedit">
-					<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
-						<div id="lang_editcustomcooldowns" class="card-header">
-							Edit Custom Cooldowns
-						</div>
-						<div class="card-body">
-							<p id="lang_editcustomcooldownsdescription" class="card-text">Here you can edit custom cooldown abilities.</p>
-							<div class="form-group row text-right">
-								<label id="lang_mode" class="control-label col-sm-4" for="customcdMode">Mode</label>
-								<div class="col-sm-6">
-									<select class="form-select form-select-sm" id="customcdMode" onchange="switchCustomcdMode()">
-										<option id="lang_edit" value="0">Edit</option>
-										<option id="lang_add" value="1">Add</option>
-									</select>
-								</div>
-							</div>
-							<div id="customcdSearchDiv" class="form-group row text-right">
-								<label id="lang_search_1" class="control-label col-sm-4" for="customcdSearch">Search</label>
-								<div class="col-sm-6">
-									<input type="text" class="form-control form-control-sm" placeholder="Default input" id="customcdSearch">
-								</div>
-							</div>
-							<div id="customcdSearchButtonDiv" class="form-group row text-right">
-								<label class="control-label col-sm-4" for="customcdSearchButton"></label>
-								<div class="col-sm-6" style="text-align: left;">
-									<button class="btn btn-primary btn-sm" onclick="searchCustomAbility()" id="customcdSearchButton"><span id="lang_search_2">Search</span></button>
-								</div>
-							</div>
-							<div class="form-group row text-right">
-								<label class="control-label col-sm-4" for="customcdIconPreview"></label>
-								<div id="customcdIconPreviewDiv" class="col-sm-6" style="text-align: left;">
-									<img id="customcdIconPreview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
-								</div>
-							</div>
-							<div id="customcdAbilityNoAbilitiesDiv" class="form-group row text-right">
-								<label class="control-label col-sm-4" for="customcdAbilityNoAbilities"></label>
-								<div id="customcdAbilityNoAbilities" class="col-sm-6" style="text-align: left;">
-									<span id="lang_noabilitiesfound">No abilities found...</span>
-								</div>                                
-							</div>
-							<div id="customcdAbilitySelectDiv" class="form-group row text-right">
-								<label id="lang_ability_2" class="control-label col-sm-4" for="customcdAbilitySelect">Ability</label>
-								<div class="col-sm-6">
-									<select class="form-select form-select-sm" id="customcdAbilitySelect" onchange="loadCustomCdAbility()">                                        
-									</select>
-								</div>
-							</div>
-							<div id="customcdOptionsDiv">
-								<div class="form-group">
-									<div class="form-check form-switch">
-										<input type="checkbox" class="form-check-input" id="customcdAbilityEnabled">
-										<label id="lang_abilityenabled_2" class="custom-control-label" for="customcdAbilityEnabled">Ability Enabled</label>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="form-check form-switch">
-										<input type="checkbox" class="form-check-input" id="customcdAbilityTTSEnabled">
-										<label id="lang_ttsenabled_7" class="custom-control-label" for="customcdAbilityTTSEnabled">TTS Enabled</label>
-									</div>
-								</div>
-								<div id="customcdAbilityIdDiv" class="form-group row text-right">
-									<label id="lang_id" class="control-label col-sm-4" for="customcdAbilityId">ID</label>
-									<div class="col-sm-6">
-										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityId">
-									</div>
-								</div>
-								<div id="customcdAbilityJobDiv" class="form-group row text-right">
-									<label id="lang_jobrole" class="control-label col-sm-4" for="customcdAbilityJob">Job / Role</label>
-									<div class="col-sm-6">
-										<select class="form-select form-select-sm" id="customcdAbilityJob">
-											<option id="lang_tank_1" value="Tank">Tank</option>
-											<option id="lang_healer_1" value="Healer">Healer</option>
-											<option id="lang_meleedps" value="MeleeDPS">Melee DPS</option>
-											<option id="lang_rangeddps" value="RangedDPS">Physical Ranged DPS</option>
-											<option id="lang_casterdps" value="CasterDPS">Magic Ranged DPS</option>
-											<option id="lang_melee" value="Melee">Melee</option>
-											<option id="lang_ranged" value="Ranged">Ranged</option>
-											<option id="lang_caster" value="Caster">Caster</option>
-											<option id="lang_acn_1" value="ACN">ACN</option>
-											<option id="lang_arc_1" value="ARC">ARC</option>
-											<option id="lang_ast_1" value="AST">AST</option>
-											<option id="lang_blm_1" value="BLM">BLM</option>
-											<option id="lang_blu_1" value="BLU">BLU</option>
-											<option id="lang_brd_1" value="BRD">BRD</option>
-											<option id="lang_cnj_1" value="CNJ">CNJ</option>
-											<option id="lang_dnc_1" value="DNC">DNC</option>
-											<option id="lang_drg_1" value="DRG">DRG</option>
-											<option id="lang_drk_1" value="DRK">DRK</option>
-											<option id="lang_gla_1" value="GLA">GLA</option>
-											<option id="lang_gnb_1" value="GNB">GNB</option>
-											<option id="lang_lnc_1" value="LNC">LNC</option>
-											<option id="lang_mch_1" value="MCH">MCH</option>
-											<option id="lang_mnk_1" value="MNK">MNK</option>
-											<option id="lang_mrd_1" value="MRD">MRD</option>
-											<option id="lang_nin_1" value="NIN">NIN</option>
-											<option id="lang_pgl_1" value="PGL">PGL</option>
-											<option id="lang_pld_1" value="PLD">PLD</option>
-											<option id="lang_rdm_1" value="RDM">RDM</option>
-											<option id="lang_rog_1" value="ROG">ROG</option>
-											<option id="lang_sam_1" value="SAM">SAM</option>
-											<option id="lang_sch_1" value="SCH">SCH</option>
-											<option id="lang_smn_1" value="SMN">SMN</option>
-											<option id="lang_thm_1" value="THM">THM</option>
-											<option id="lang_war_1" value="WAR">WAR</option>
-											<option id="lang_whm_1" value="WHM">WHM</option>
-										</select>
-									</div>
-								</div>
-								<div id="customcdAbilityTTSTypeDiv" class="form-group row text-right">
-									<label id="lang_ttstype_2" class="control-label col-sm-4" for="customcdAbilityTTSType">TTS Type</label>
-									<div class="col-sm-6">
-										<select class="form-select form-select-sm" id="customcdAbilityTTSType">
-											<option id="lang_abilitycooldown_2" selected="" value="0">Ability Cooldown</option>
-											<option id="lang_abilityduration_2" value="1">Ability Duration</option>
-											<option id="lang_oncast_2" value="2">On Cast</option>
-										</select>
-									</div>
-								</div>
-								<div id="customcdAbilityDurationDiv" class="form-group row text-right">
-									<label id="lang_duration_2" class="control-label col-sm-4" for="customcdAbilityDuration">Duration</label>
-									<div class="col-sm-6">
-										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityDuration">
-									</div>
-								</div>
-								<div id="customcdAbilityCooldownDiv" class="form-group row text-right">
-									<label id="lang_cooldown_2" class="control-label col-sm-4" for="customcdAbilityCooldown">Cooldown</label>
-									<div class="col-sm-6">
-										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityCooldown">
-									</div>
-								</div>
-								<div id="customcdAbilityChargesDiv" class="form-group row text-right">
-									<label id="lang_charges" class="control-label col-sm-4" for="customcdAbilityCooldown">Charges</label>
-									<div class="col-sm-6">
-										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityCharges">
-									</div>
-								</div>
-								<div id="customcdAbilityOrderDiv" class="form-group row text-right">
-									<label id="lang_order_2" class="control-label col-sm-4" for="customcdAbilityOrder">Order</label>
-									<div class="col-sm-6">
-										<input type="number" class="form-control form-control-sm" placeholder="Default input" id="customcdAbilityOrder">
-									</div>
-								</div>
-								<div id="customcdAbilityTypeDiv" class="form-group row text-right">
-									<label id="lang_type" class="control-label col-sm-4" for="customcdAbilityType">Type</label>
-									<div class="col-sm-6">
-										<select class="form-select form-select-sm" id="customcdAbilityType">
-											<option id="lang_customcooldowns_3" selected="" value="CustomCooldown">Custom Cooldowns</option>
-											<option id="lang_mitigations_3" value="Mitigation">Mitigations</option>
-											<option id="lang_party_3" value="Party">Party Cooldowns</option>
-											<option id="lang_raidbuffs_3" value="RaidBuff">Raid Buffs</option>
-										</select>
-									</div>
-								</div>	
-								<div id="customcdAddButtonDiv" class="form-group row text-right">
-									<label class="control-label col-sm-4" for="customcdAddButton"></label>
-									<div class="col-sm-6" style="text-align: left;">
-										<button class="btn btn-primary btn-sm" onclick="addCustomAbility()" id="customcdAddButton"><span id="lang_add_2">Add</span></button>
-									</div>
-								</div>
-								<div id="customcdSaveButtonDiv" class="form-group row text-right">
-									<label class="control-label col-sm-4" for="customcdSaveButton"></label>
-									<div class="col-sm-6" style="text-align: left;">
-										<button class="btn btn-primary btn-sm" onclick="saveCustomAbility()" id="customcdSaveButton"><span id="lang_save_1">Save</span></button>
-										<button class="btn btn-primary btn-sm" onclick="deleteCustomAbility()" id="customcdDeleteButton"><span id="lang_delete">Delete</span></button>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+
 			</div>
 			<div class="row">			
 				<div class="col-lg-6">
