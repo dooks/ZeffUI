@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Miedinger;
+    src: url("../images/Miedinger--Book.otf") format("opentype")
+}
+
 .bar {
     position: absolute;
     width: 160px;
